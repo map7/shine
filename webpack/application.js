@@ -48,6 +48,7 @@ var AngularTestAppModule = ng.core.NgModule({
 document.addEventListener('DOMContentLoaded', function() {
   var shouldBootstrap = document.getElementById("angular-test");
   if (shouldBootstrap) {
+    // Tell Angular that we are running within a browser
     ng.platformBrowserDynamic.
       platformBrowserDynamic().
       bootstrapModule(AngularTestAppModule);
