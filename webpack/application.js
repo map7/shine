@@ -1,5 +1,7 @@
 require("application.css");
 require("bootstrap/dist/css/bootstrap.css");
+
+// Setup Angular requirements
 var coreJS =              require("core-js");
 var zoneJS =              require("zone.js");
 var reflectMetadata =     require("reflect-metadata");
