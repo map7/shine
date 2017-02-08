@@ -104,7 +104,13 @@ var CustomerSearchComponent = ng.core.Component({
   </section> \
   '
 }).Class({
-  constructor: function(){}
+  constructor: function(){
+    this.keywords = null;
+  },
+  
+  search: function() {
+    alert("Searched for: " + this.keywords);
+  }
 });
 
 // Top Level SearchComponent
