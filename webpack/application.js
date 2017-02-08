@@ -43,3 +43,13 @@ var AngularTestAppModule = ng.core.NgModule({
   constructor: function(){}
 });
 
+// Add event listener
+// Check for our angular-test element by looking for ID once the DOM is loaded.
+document.addEventListener('DOMContentLoaded', function() {
+  var shouldBootstrap = document.getElementById("angular-test");
+  if (shouldBootstrap) {
+    ng.platformBrowserDynamic.
+      platformBrowserDynamic().
+      bootstrapModule(AngularTestAppModule);
+  }
+});
