@@ -34,6 +34,15 @@ var AngularTestComponent = ng.core.Component({
   }
 });
 
+// Top level component
+var AngularTestAppModule = ng.core.NgModule({
+  imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
+  declarations: [ AngularTestComponent ],
+  bootstrap: [ AngularTestComponent ]
+}).Class({
+  constructor: function(){}
+});
+
 // Search Component
 var CustomerSearchComponent = ng.core.Component({
   selector: "shine-customer-search",
@@ -76,13 +85,13 @@ var CustomerSearchComponent = ng.core.Component({
   constructor: function(){}
 });
 
-// Top level component
-var AngularTestAppModule = ng.core.NgModule({
+// Top Level SearchComponent
+var CustomerSearchAppModule = ng.core.NgModule({
   imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
-  declarations: [ AngularTestComponent ],
-  bootstrap: [ AngularTestComponent ]
+  declarations: [ CustomerSearchComponent ],
+  bootstrap: [ CustomerSearchComponent ]
 }).Class({
-  constructor: function(){}
+  cosntructor: function() {}
 });
 
 // Add event listener
