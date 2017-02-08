@@ -2,6 +2,12 @@
   <h1 class="h2">Customer Search</h1>
 </header>
 
+<!-- New AngularJS interface -->
+<section id="shine-customer-search">
+  <shine-customer-search></shine-customer-search>
+</section>
+
+<!-- OLD Rails interface -->
 <% if @customers.present? %>
   <%= render partial: "pager",
   locals: { keywords: @keywords, page: @page } %>
