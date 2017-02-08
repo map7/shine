@@ -34,3 +34,12 @@ var AngularTestComponent = ng.core.Component({
   }
 });
 
+// Top level component
+var AngularTestAppModule = ng.core.NgModule({
+  imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
+  declarations: [ AngularTestComponent ],
+  bootstrap: [ AngularTestComponent ]
+}).Class({
+  constructor: function(){}
+});
+
