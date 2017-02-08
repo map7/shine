@@ -78,7 +78,8 @@ var CustomerSearchComponent = ng.core.Component({
              class="form-control input-lg"> \
       <span class="input-group-btn"> \
         <input type="submit" value="Find Customers" \
-               class="btn btn-primary btn-lg"> \
+               class="btn btn-primary btn-lg" \
+               on-click="search()"> \
       </span> \
     </div> \
   </section> \
