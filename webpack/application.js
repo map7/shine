@@ -15,6 +15,10 @@ var ng = {
   router:                 require("@angular/router")
 };
 
+// --------------------------------------------------------------------------------
+// AngularTestComponent
+// --------------------------------------------------------------------------------
+
 // Component
 var AngularTestComponent = ng.core.Component({
   selector: "shine-angular-test",
@@ -42,6 +46,22 @@ var AngularTestAppModule = ng.core.NgModule({
 }).Class({
   constructor: function(){}
 });
+
+// Add event listener
+// Check for our angular-test element by looking for ID once the DOM is loaded.
+document.addEventListener('DOMContentLoaded', function() {
+  var shouldBootstrap = document.getElementById("angular-test");
+  if (shouldBootstrap) {
+    // Tell Angular that we are running within a browser
+    ng.platformBrowserDynamic.
+      platformBrowserDynamic().
+      bootstrapModule(AngularTestAppModule);
+  }
+});
+
+// --------------------------------------------------------------------------------
+// Customer Search Component
+// --------------------------------------------------------------------------------
 
 // Search Component
 var CustomerSearchComponent = ng.core.Component({
@@ -91,17 +111,16 @@ var CustomerSearchAppModule = ng.core.NgModule({
   declarations: [ CustomerSearchComponent ],
   bootstrap: [ CustomerSearchComponent ]
 }).Class({
-  cosntructor: function() {}
+  constructor: function() {}
 });
 
-// Add event listener
-// Check for our angular-test element by looking for ID once the DOM is loaded.
+// Add event listener for customer search component
 document.addEventListener('DOMContentLoaded', function() {
-  var shouldBootstrap = document.getElementById("angular-test");
-  if (shouldBootstrap) {
+
+  if (document.getElementById("shine-customer-search")) {
     // Tell Angular that we are running within a browser
     ng.platformBrowserDynamic.
       platformBrowserDynamic().
-      bootstrapModule(AngularTestAppModule);
+      bootstrapModule(CustomerSearchAppModule);
   }
 });
