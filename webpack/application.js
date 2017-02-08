@@ -14,3 +14,23 @@ var ng = {
   platformBrowserDynamic: require("@angular/platform-browser-dynamic"),
   router:                 require("@angular/router")
 };
+
+// Component
+var AngularTestComponent = ng.core.Component({
+  selector: "shine-angular-test",
+  template: '\
+  <h2 *ngIf="salutation">Hello {{salutation}}!</h2> \
+  <form> \
+    <div class="form-group"> \
+      <label for="name">Name</label> \
+      <input type="text" id="name" class="form-control" \
+             name="name" bindon-ngModel="salutation"> \
+    </div> \
+  </form> \
+  '
+}).Class({
+  constructor: function(){
+    this.salutation = null;
+  }
+});
+
