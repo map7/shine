@@ -148,12 +148,17 @@ var CustomerSearchComponent = ng.core.Component({
   },
   
   search: function() {
-    if (this.keywords == "pat"){
-      this.customers = RESULTS;
-    }
-    else {
-      this.customers = [];
-    }
+    var self = this;            // Allow us to use this within the function
+    self.http.get (             // Use the http library
+      "/customers.json?keywords=" + self.keywords // URL to our rails controller, specify JSON.
+    ).subscribe(
+      function(response){       // Listen for the completed HTTP request
+        self.customers = response.json().customers; // Extract the results from the response
+      },
+      function(response){       // Only called on ERROR status.
+        window.alert(response);
+      }
+    );
   }
 });
 
