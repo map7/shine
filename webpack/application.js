@@ -105,23 +105,15 @@ document.addEventListener('DOMContentLoaded', function() {
 var CustomerSearchComponent = ng.core.Component({
   selector: "shine-customer-search",
   template: '\
-  <header> \
-    <h1 class="h2">Customer Search</h1> \
-  </header> \
   <section class="search-form"> \
-    <div class="input-group input-group-lg"> \
+    <form> \
       <label for="keywords" class="sr-only">Keywords</label> \
       <input type="text" id="keywords" name="keywords" \
              placeholder="First Name, Last Name, or Email Address" \
              class="form-control input-lg" \
              bind-ngModel="keywords" \
              on-ngModelChange="search($event)"> \
-      <span class="input-group-btn"> \
-        <input type="submit" value="Find Customers" \
-               class="btn btn-primary btn-lg" \
-               on-click="search()"> \
-      </span> \
-    </div> \
+    </form> \
   </section> \
   <section class="search-results"> \
     <header> \
