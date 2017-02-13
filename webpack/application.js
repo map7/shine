@@ -12,7 +12,8 @@ var ng = {
   forms:                  require("@angular/forms"),
   platformBrowser:        require("@angular/platform-browser"),
   platformBrowserDynamic: require("@angular/platform-browser-dynamic"),
-  router:                 require("@angular/router")
+  router:                 require("@angular/router"),
+  http:                   require("@angular/http")
 };
 var RESULTS = [
   {
@@ -142,10 +143,14 @@ var CustomerSearchComponent = ng.core.Component({
   </section> \
   '
 }).Class({
-  constructor: function(){
-    this.customers = null;
-    this.keywords = "";
-  },
+  constructor: [
+    ng.http.Http,
+    function(http){
+      this.customers = null;
+      this.http = http;
+      this.keywords = "";
+    }
+  ],
   
   search: function() {
     var self = this;            // Allow us to use this within the function
@@ -164,7 +169,11 @@ var CustomerSearchComponent = ng.core.Component({
 
 // Top Level SearchComponent
 var CustomerSearchAppModule = ng.core.NgModule({
-  imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
+  imports: [
+    ng.platformBrowser.BrowserModule,
+    ng.forms.FormsModule,
+    ng.http.HttpModule
+  ],
   declarations: [ CustomerSearchComponent ],
   bootstrap: [ CustomerSearchComponent ]
 }).Class({
