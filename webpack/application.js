@@ -114,7 +114,8 @@ var CustomerSearchComponent = ng.core.Component({
       <input type="text" id="keywords" name="keywords" \
              placeholder="First Name, Last Name, or Email Address" \
              class="form-control input-lg" \
-             bindon-ngModel="keywords"> \
+             bind-ngModel="keywords" \
+             on-ngModelChange="search($event)"> \
       <span class="input-group-btn"> \
         <input type="submit" value="Find Customers" \
                class="btn btn-primary btn-lg" \
@@ -152,8 +153,12 @@ var CustomerSearchComponent = ng.core.Component({
     }
   ],
   
-  search: function() {
+  search: function($event) {
     var self = this;            // Allow us to use this within the function
+    self.keywords = $event;
+    if (self.keywords.length < 3){
+      return;
+    }
     self.http.get (             // Use the http library
       "/customers.json?keywords=" + self.keywords // URL to our rails controller, specify JSON.
     ).subscribe(
