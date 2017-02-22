@@ -1,4 +1,5 @@
 require "rails_helper"
+require 'support/violate_check_constraint_matcher'
 
 RSpec.describe User do
   describe "#email" do 
