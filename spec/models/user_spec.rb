@@ -10,8 +10,7 @@ RSpec.describe User do
     it "absolutely prevents invalid email addresses" do
       expect {
         user.update_attribute(:email, "foo@bar.com")
-      }.to raise_error(ActiveRecord::StatementInvalid,
-                       /email_must_be_company_email/i)
+      }.to violate_check_constraint(:email_must_be_company_email)
     end
   end
 end
