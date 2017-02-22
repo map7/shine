@@ -39,7 +39,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem "rspec-rails", "~> 3.0"
-  gem "poltergeist"
+  gem "poltergeist"             # Link phantomjs to ruby
+  gem "database_cleaner"        # Clean up after acceptance/integration tests.
 end
 
 group :development do
