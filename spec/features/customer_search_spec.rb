@@ -38,5 +38,21 @@ feature "Customer Search" do
     click_button "Log in"    
   end
 
-  
+  scenario "Search by Name" do
+    within "section.search-form" do 
+      fill_in "keywords", with: "pat"
+    end
+    within "section.search-results" do 
+      expect(page).to have_content("Results")
+
+      expect(page.all("ol li.list-group-item").count).to eq(4)
+
+      expect(page.all("ol li.list-group-item")[0]).to have_content("Patricia")
+      expect(page.all("ol li.list-group-item")[0]).to have_content("Dobbs")
+      
+      expect(page.all("ol li.list-group-item")[3]).to have_content("I.T.")
+      expect(page.all("ol li.list-group-item")[3]).to have_content("Pat")
+    end
+    
+  end
 end
