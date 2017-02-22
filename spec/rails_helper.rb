@@ -60,8 +60,26 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.before(:suite) do
+    # Runs webpack-dev-server on the same port as development, make sure you have dev shutdown before tests.
+    $webpack_dev_server_pid = spawn(
+                                    "./node_modules/.bin/webpack-dev-server " +
+                                      "--config config/webpack.config.js --quiet")
     DatabaseCleaner.clean_with(:truncation)    
   end
+
+  config.after(:suite) do 
+    puts "Killing webpack-dev-server"
+    Process.kill("HUP", $webpack_dev_server_pid)
+
+    begin
+      Timeout.timeout(2) do
+        Process.wait($webpack_dev_server_pid,0)
+      end
+    rescue => Timeout::Error
+      Process.kill(9,$webpack_dev_server_pid)
+    end
+  end
+  
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction    
   end
