@@ -60,16 +60,27 @@ describe("CustomerSearchComponent", function(){
       beforeEach(function(){
         var response = td.object(["json"]);
         td.when(response.json()).thenReturn({customers: customers});
-        mockHttp = td.object(["get"]);
-        component = new CustomerSearchComponent(mockHttp);
 
+        var observable = td.object(["subscribe"]);
+        td.when(observable.subscribe(
+          td.callback(response),
+          td.matchers.isA(Function))).thenReturn();
+        
+        mockHttp = td.object(["get"]);
+        td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
+
+        component = new CustomerSearchComponent(mockHttp);
       });
       
       describe("A successful search", function(){
         it("sets the keywords to be 'pat'",function(){
+          component.search("pat");
+          expect(component.keywords).toBe("pat");
         });
         
         it("sets the customers to the results of the HTTP call", function(){
+          component.search("pat");
+          expect(component.customers).toBe(customers);
         });
       });
       describe("A search that fails on the back-end", function(){
