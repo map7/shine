@@ -20,6 +20,7 @@ describe("CustomerSearchComponent", function(){
   describe("search", function(){
     describe("A search for 'pa', less than three characters", function(){
       var mockHttp = null;
+
       beforeEach(function(){
         mockHttp = td.object(["get"]);
         component = new CustomerSearchComponent(mockHttp);
@@ -34,10 +35,42 @@ describe("CustomerSearchComponent", function(){
         td.verify(mockHttp.get(), { times: 0 });
       });
     });
+    
     describe("A search for 'pat', three or more characters", function(){
+      var mockHttp = null;
+      var customers = [
+        {
+          id: 1,
+          created_at: (new Date()).toString(),
+          first_name: "Pat",
+          last_name: "Jones",
+          username: "pj",
+          email: "pjones@somewhere.net"
+        },
+        {
+          id: 2,
+          created_at: (new Date()).toString(),
+          first_name: "Pat",
+          last_name: "Jones",
+          username: "pj",
+          email: "pjones@somewhere.net"
+        }
+      ];
+
+      beforeEach(function(){
+        var response = td.object(["json"]);
+        td.when(response.json()).thenReturn({customers: customers});
+        mockHttp = td.object(["get"]);
+        component = new CustomerSearchComponent(mockHttp);
+
+      });
+      
       describe("A successful search", function(){
-        it("sets the keywords to be 'pat'");
-        it("sets the customers to the results of the HTTP call");
+        it("sets the keywords to be 'pat'",function(){
+        });
+        
+        it("sets the customers to the results of the HTTP call", function(){
+        });
       });
       describe("A search that fails on the back-end", function(){
         it("sets the keywords to be 'pat'");
