@@ -62,10 +62,13 @@ describe("CustomerSearchComponent", function(){
         td.when(response.json()).thenReturn({customers: customers});
 
         var observable = td.object(["subscribe"]);
+        // From the book "when we call subscribe on observable, call the callback passed as the first parameter with
+        // our mock response, and make sure the second parameter is also a function."
         td.when(observable.subscribe(
           td.callback(response),
           td.matchers.isA(Function))).thenReturn();
-        
+
+        // Return mock observable when get is called
         mockHttp = td.object(["get"]);
         td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
 
