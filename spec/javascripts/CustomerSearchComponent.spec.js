@@ -58,6 +58,8 @@ describe("CustomerSearchComponent", function(){
       ];
 
       beforeEach(function(){
+        window = td.object(["alert"]);
+        
         var response = td.object(["json"]);
         td.when(response.json()).thenReturn({customers: customers});
 
@@ -86,10 +88,39 @@ describe("CustomerSearchComponent", function(){
           expect(component.customers).toBe(customers);
         });
       });
+
       describe("A search that fails on the back-end", function(){
-        it("sets the keywords to be 'pat'");
-        it("leaves customers as null");
-        it("alerts the user with the response message");
+        beforeEach(function(){
+          var response = "There was an error!";
+          var observable = td.object(["subscribe"]);
+
+          td.when(observable.subscribe(
+            td.matchers.isA(Function),
+            td.callback(response))).thenReturn();
+
+          // Return mock observable when get is called
+          mockHttp = td.object(["get"]);
+          td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
+
+          td.when(window.alert()).thenReturn();
+          
+          component = new CustomerSearchComponent(mockHttp);
+        });
+        
+        it("sets the keywords to be 'pat'", function(){
+          component.search("pat");
+          expect(component.keywords).toBe("pat");
+        });
+        
+        it("leaves customers as null", function(){
+          component.search("pat");
+          expect(component.customers).toBe(null);
+        });
+        
+        it("alerts the user with the response message", function(){
+          component.search("pat");
+          td.verify(window.alert("There was an error!"));
+        });
       });
     });
   });
