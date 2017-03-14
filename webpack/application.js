@@ -122,3 +122,5 @@ document.addEventListener('DOMContentLoaded', function() {
       bootstrapModule(CustomerSearchAppModule);
   }
 });
+
+var CustomerDetailsComponent = require("./CustomerDetailsComponent");
