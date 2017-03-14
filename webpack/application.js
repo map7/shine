@@ -119,7 +119,8 @@ var CustomerSearchAppModule = ng.core.NgModule({
   imports: [
     ng.platformBrowser.BrowserModule,
     ng.forms.FormsModule,
-    ng.http.HttpModule
+    ng.http.HttpModule,
+    routing
   ],
   declarations: [
     CustomerSearchComponent,
