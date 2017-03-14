@@ -21,7 +21,9 @@ class CustomersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html {}
+      format.html {
+        redirect_to "/customers/ng"
+      }
       format.json {
         render json: { customers: @customers }
       }      
