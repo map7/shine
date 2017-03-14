@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 var CustomerSearchComponent = require("./CustomerSearchComponent");
+var CustomerDetailsComponent = require("./CustomerDetailsComponent");
 
 // Top Level SearchComponent
 var CustomerSearchAppModule = ng.core.NgModule({
@@ -106,7 +107,10 @@ var CustomerSearchAppModule = ng.core.NgModule({
     ng.forms.FormsModule,
     ng.http.HttpModule
   ],
-  declarations: [ CustomerSearchComponent ],
+  declarations: [
+    CustomerSearchComponent,
+    CustomerDetailsComponent
+  ],
   bootstrap: [ CustomerSearchComponent ]
 }).Class({
   constructor: function() {}
@@ -123,4 +127,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-var CustomerDetailsComponent = require("./CustomerDetailsComponent");
+
