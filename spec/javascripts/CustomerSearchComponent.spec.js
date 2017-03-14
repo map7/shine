@@ -1,3 +1,4 @@
+var proxyquire = require("proxyquire");
 var CustomerSearchComponent = require("../../webpack/CustomerSearchComponent.js");
 var td = require("testdouble");
 
