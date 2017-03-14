@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+var CustomerAppComponent = require("./CustomerAppComponent");
 var CustomerSearchComponent = require("./CustomerSearchComponent");
 var CustomerDetailsComponent = require("./CustomerDetailsComponent");
 
@@ -124,9 +125,10 @@ var CustomerSearchAppModule = ng.core.NgModule({
   ],
   declarations: [
     CustomerSearchComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    CustomerAppComponent
   ],
-  bootstrap: [ CustomerSearchComponent ]
+  bootstrap: [ CustomerAppComponent ]
 }).Class({
   constructor: function() {}
 });
