@@ -100,6 +100,20 @@ document.addEventListener('DOMContentLoaded', function() {
 var CustomerSearchComponent = require("./CustomerSearchComponent");
 var CustomerDetailsComponent = require("./CustomerDetailsComponent");
 
+// Add routing
+var routing = ng.router.RouterModule.forRoot(
+  [
+    {
+      path: "",
+      component: CustomerSearchComponent
+    },
+    {
+      path: ":id",
+      component: CustomerDetailsComponent
+    }
+  ]
+);
+
 // Top Level SearchComponent
 var CustomerSearchAppModule = ng.core.NgModule({
   imports: [
