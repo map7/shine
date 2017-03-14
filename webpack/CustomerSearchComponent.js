@@ -1,7 +1,8 @@
 var reflectMetadata = require("reflect-metadata");
 var ng = {
   core: require("@angular/core"),
-  http: require("@angular/http")
+  http: require("@angular/http"),
+  router: require("@angular/router")
 };
 
 // --------------------------------------------------------------------------------
@@ -15,9 +16,10 @@ var CustomerSearchComponent = ng.core.Component({
 }).Class({
   constructor: [
     ng.http.Http,
-    function(http){
+    function(http,router){
       this.customers = null;
       this.http = http;
+      this.router = router;
       this.keywords = "";
     }
   ],
