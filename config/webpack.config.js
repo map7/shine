@@ -41,7 +41,7 @@ var config = {
       },
       {
         test: /\.html/,
-        loader: "raw"
+        loader: 'raw'
       }
     ]
   },
