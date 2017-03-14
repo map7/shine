@@ -16,6 +16,7 @@ var CustomerSearchComponent = ng.core.Component({
 }).Class({
   constructor: [
     ng.http.Http,
+    ng.router.Router,
     function(http,router){
       this.customers = null;
       this.http = http;
@@ -40,7 +41,12 @@ var CustomerSearchComponent = ng.core.Component({
         window.alert(response);
       }
     );
+  },
+
+  viewDetails: function(customer){
+    this.router.navigate(["/", customer.id]);
   }
+  
 });
 
 
