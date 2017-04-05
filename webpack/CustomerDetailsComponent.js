@@ -14,6 +14,16 @@ var CustomerDetailsComponent = ng.core.Component({
       this.activatedRoute = activatedRoute;
       this.id = null;
     }
-  ]
+  ],
+
+  ngOnInit: function() {
+    var self = this;
+    self.activatedRoute.params.subscribe(
+      function(params){
+        var id = +params['id'];
+        self.id = id;
+      }
+    );
+  }
 });
 module.exports = CustomerDetailsComponent;
