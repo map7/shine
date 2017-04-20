@@ -33,6 +33,19 @@ var createMockHttp = function(customer){
   return mockHttp;
 };
 
+var createMockRoute = function(id){
+  var observable = td.object(["subscribe"]);
+  var routeParams = {"id" : id};
+  var mockActivatedRoute = { "params": observable };
+
+  td.when(observable.subscribe(
+    td.callback(routeParams),
+    td.matchers.isA(Function)
+  )).thenReturn();
+
+  return mockActivatedRoute;
+};
+
 describe("CustomerDetailsComponentComponent", function(){
   describe("initial state", function(){
     beforeEach(function(){
