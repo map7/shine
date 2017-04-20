@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get "customers/ng/*angular_route", to: "customers#ng#"
   # the *angular_route is called route globbing, meaning it can be anything and will be put into params.
   
-  resources :customers, only: [:index]
+  resources :customers, only: [:index, :show]
   get "angular_test" => "angular_test#index"
 end
