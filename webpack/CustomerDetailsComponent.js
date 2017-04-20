@@ -12,7 +12,7 @@ var CustomerDetailsComponent = ng.core.Component({
     ng.router.ActivatedRoute,
     function(activatedRoute){
       this.activatedRoute = activatedRoute;
-      this.id = null;
+      this.customer = null;
     }
   ],
 
