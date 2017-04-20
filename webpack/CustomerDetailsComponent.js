@@ -21,6 +21,11 @@ var CustomerDetailsComponent = ng.core.Component({
 
   ngOnInit: function() {
     var self = this;
+
+    // error handler
+    var observableFailed = function(response){
+      window.alert(response);
+    };
     
     self.activatedRoute.params.subscribe(
       function(params){
