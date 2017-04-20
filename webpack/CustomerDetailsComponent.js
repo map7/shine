@@ -11,10 +11,10 @@ var CustomerDetailsComponent = ng.core.Component({
 }).Class({
   constructor: [
     ng.router.ActivatedRoute,
-    ng.http.Http;
-    function(activatedRoute){
+    ng.http.Http,
+    function(activatedRoute, http){
       this.activatedRoute = activatedRoute;
-      this.http = Http;
+      this.http = http;
       this.customer = null;
     }
   ],
@@ -26,6 +26,21 @@ var CustomerDetailsComponent = ng.core.Component({
     var observableFailed = function(response){
       window.alert(response);
     };
+
+    var customerGetSuccess = function(response){
+      self.customer = response.json().customer;
+    };
+
+    var routeSuccess = function(params) {
+      self.http.get(
+        "/customers/" + params['id'] + ".json"
+      ).subscribe(
+        customerGetSuccess,
+        observableFailed
+      );
+    };
+
+    self.activatedRoute.params.subscribe(routeSuccess, observableFailed);
     
     self.activatedRoute.params.subscribe(
       function(params){
