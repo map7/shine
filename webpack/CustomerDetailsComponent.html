@@ -15,14 +15,14 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="sr-only" for="first-name">First Name</label>
-                  <input type="text" class="form-control" name="first-name" value="Bob">
+                  <input type="text" class="form-control" name="first-name" value={{customer.first_name}}>
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="sr-only" for="last-name">Last Name</label>
-                  <input type="text" class="form-control" name="last-name" value="Jones">
+                  <input type="text" class="form-control" name="last-name" value={{customer.last_name}}>
                 </div>
               </div>          
 
@@ -31,7 +31,7 @@
                   <label class="sr-only" for="username">Username</label>
                   <div class="input-group">
                     <div class="input-group-addon">@</div>
-                    <input type="text" class="form-control" name="username" value="bobert123">
+                    <input type="text" class="form-control" name="username" value={{customer.username}}>
                   </div>
                 </div>
               </div>
@@ -40,7 +40,7 @@
 
             <div class="form-group">
               <label class="sr-only" for="email">Email</label>
-              <input type="text" class="form-control" name="email" value="bobbyj@somewhere.net">
+              <input type="text" class="form-control" name="email" value={{customer.email}}>
             </div>
             
           </section>
@@ -61,7 +61,7 @@
 
             <div class="form-group">
               <label class="sr-only" for="street-address">Street Address</label>
-              <input type="text" class="form-control" name="street-address" value="123 Any St">
+              <input type="text" class="form-control" name="street-address" value={{customer.shipping_street}}>
             </div>
 
             <div class="row">
@@ -69,21 +69,21 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="sr-only" for="city">City</label>
-                  <input type="text" class="form-control" name="city" value="Washington">
+                  <input type="text" class="form-control" name="city" value={{customer.shipping_city}}>
                 </div>
               </div>
 
               <div class="col-md-2">
                 <div class="form-group">
                   <label class="sr-only" for="state">State</label>
-                  <input type="text" class="form-control" name="state" value="DC">
+                  <input type="text" class="form-control" name="state" value={{customer.shipping_state}}>
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="sr-only" for="zip">Zip</label>
-                  <input type="text" class="form-control" name="zip" value="20001">
+                  <input type="text" class="form-control" name="zip" value={{customer.shipping_zipcode}}>
                 </div>
               </div>
               
@@ -139,7 +139,7 @@
               
               <div class="form-group">
                 <label class="sr-only" for="street-address">Street Address</label>
-                <input type="text" class="form-control" name="street-address" value="123 Any St">
+                <input type="text" class="form-control" name="street-address" value={{customer.billing_street}}>
               </div>
 
               <div class="row">
@@ -147,21 +147,21 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="sr-only" for="city">City</label>
-                    <input type="text" class="form-control" name="city" value="Washington">
+                    <input type="text" class="form-control" name="city" value={{customer.billing_city}}>
                   </div>
                 </div>
 
                 <div class="col-md-2">
                   <div class="form-group">
                     <label class="sr-only" for="state">State</label>
-                    <input type="text" class="form-control" name="state" value="DC">
+                    <input type="text" class="form-control" name="state" value={{customer.billing_state}}>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label class="sr-only" for="zip">Zip</label>
-                    <input type="text" class="form-control" name="zip" value="20001">
+                    <input type="text" class="form-control" name="zip" value={{customer.billing_zipcode}}>
                   </div>
                 </div>
                 
